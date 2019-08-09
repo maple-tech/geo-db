@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS countries (
     
     name     text NOT NULL,
     capital  text,
-    currency    char(3) REFERENCES currencies (short_code),
+    currency    char(3) REFERENCES currencies (code),
 
     continent   char(2) NOT NULL REFERENCES continents (code),
     dial_code   varchar(8),
@@ -66,27 +66,26 @@ CREATE TABLE IF NOT EXISTS country_languages (
     dialect     char(5),
     index       smallint DEFAULT 0,
 
-    CONSTRAINT pk_country_languages PRIMARY KEY (country, lang),
     CONSTRAINT uk_country_order UNIQUE (country, index)
 );
 CREATE INDEX IF NOT EXISTS idx_country_languages ON country_languages (country);
 
 -- Regions of countries
 CREATE TABLE IF NOT EXISTS regions (
-    iso3       char(7) PRIMARY KEY,
+    iso3       varchar(9) PRIMARY KEY,
     iso2       char(5) NOT NULL,
     country     char(3) NOT NULL REFERENCES countries (iso3),
     
     name        text NOT NULL,
 
-    CONSTRAINT uk_regions UNIQUE (iso2)
+    CONSTRAINT uk_regions UNIQUE (iso2,country)
 );
 CREATE INDEX IF NOT EXISTS idx_regions_iso_2 ON regions (iso2);
 CREATE INDEX IF NOT EXISTS idx_regions_country ON regions (country);
 
 -- Counties
 CREATE TABLE IF NOT EXISTS counties (
-    id          serial PRIMARY KEY,
+    id          char(8) PRIMARY KEY,
     country     char(5) NOT NULL REFERENCES countries (iso3),
     region      char(7) REFERENCES regions (iso3),
     
@@ -101,7 +100,7 @@ CREATE TABLE IF NOT EXISTS cities (
 
     country     char(5) NOT NULL REFERENCES countries (iso3),
     region      char(7) REFERENCES regions (iso3),
-    county      integer REFERENCES counties (id),
+    county      char(8) REFERENCES counties (id),
 
     name            text NOT NULL,
     postal_codes    text[],

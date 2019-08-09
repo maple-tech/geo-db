@@ -138,7 +138,7 @@ INSERT INTO currencies (code, name) VALUES
 	('TJS','Somoni'),
 	('TMT','Manat'),
 	('TND','Dinar'),
-	('TOP','Pa\'anga'),
+	('TOP','Pa''anga'),
 	('TRY','Lira'),
 	('TTD','Dollar'),
 	('TWD','Dollar'),

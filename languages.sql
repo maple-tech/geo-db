@@ -16,7 +16,7 @@ INSERT INTO languages (iso3, iso2, iso1, name) VALUES
 	('bam','bam','bm','Bambara'),
 	('bel','bel','be','Belarusian'),
 	('ben','ben','bn','Bengali'),
-	('bih','bih','bh','Bihari '),
+	('bih','bih','bh','Bihari'),
 	('bis','bis','bi','Bislama'),
 	('bod','bod','bo','Tibetan'),
 	('bos','bos','bs','Bosnian'),
@@ -57,7 +57,7 @@ INSERT INTO languages (iso3, iso2, iso1, name) VALUES
 	('guj','guj','gu','Gujarati'),
 	('hat','hat','ht','Haitian'),
 	('hau','hau','ha','Hausa'),
-	('hbs','','sh','Serbo-Croatian'),
+	('hbs',null,'sh','Serbo-Croatian'),
 	('heb','heb','he','Hebrew'),
 	('her','her','hz','Herero'),
 	('hin','hin','hi','Hindi'),
@@ -184,6 +184,6 @@ INSERT INTO languages (iso3, iso2, iso1, name) VALUES
 	('yor','yor','yo','Yoruba'),
 	('zha','zha','za','Zhuang'),
 	('zho','zho','zh','Chinese'),
-	('zul','zul','zu','Zulu'),
+	('zul','zul','zu','Zulu');
 COMMIT;
 ANALYZE;
